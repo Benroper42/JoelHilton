@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<head>
+    <title>Confirmation</title>
+    <script>
+        var count = 7;
+        var interval = setInterval(function () {
+            document.getElementById('countdown').innerHTML = count;
+            count--;
+            if (count === -1) {
+                clearInterval(interval);
+                window.location.href = '@Url.Action("Index")'; // Redirect to home page after countdown
+            }
+        }, 1000);
+    </script>
+</head>
+<body>
+    <h2>Thank you for your submission!</h2>
+    <p>You will be redirected in <span id="countdown">7</span> seconds.</p>
+</body>
+
+
