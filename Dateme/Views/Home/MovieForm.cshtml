@@ -5,14 +5,20 @@
 <h1>Movie Form</h1>
 
 <form method="post">
-    <label asp-for="Category">Category:</label>
-    <input asp-for="Category"/>
+    <input type=hidden asp-for="MovieId" />
+    <select asp-for="CategoryId">
+        <option value="">Select a Category</option>
+        @foreach (Category c in ViewBag.Categories)
+        {
+            <option value="@c.CategoryId">@c.CategoryName</option>
+        }
+    </select>
     <br />
     <label asp-for="Title">Title:</label>
     <input asp-for="Title" />
     <br />
     <label asp-for="Year">Year:</label>
-    <input asp-for="Year" />
+    <input min="1888"  type="number" asp-for="Year" />
     <br />
     <label asp-for="Director">Director:</label>
     <input asp-for="Director" />
@@ -37,6 +43,7 @@
     <br />
     <label asp-for="Notes">Notes</label>
     <input asp-for="Notes" />
+    <br />
 
     <button type="submit">Submit Movie</button>
 

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JoelHilton.Models
 {
@@ -6,30 +8,36 @@ namespace JoelHilton.Models
     {
         [Key]
         [Required]
-        public int MovieID { get; set; }
+        public int MovieId { get; set; }
 
-        [Required(ErrorMessage = "Category is required.")]
-        public string Category { get; set; }
+        [ForeignKey("Category")]
+        public int? CategoryId { get; set; }
+
+        public Category? Category { get; set; }
 
         [Required(ErrorMessage = "Title is required.")]
         public string Title { get; set; }
+        
 
-        [Required(ErrorMessage = "Year is required.")]
-        public string Year { get; set; }
+        [Required(ErrorMessage = "Year cannot be older than 1888.")]
+        public int Year { get; set; }
 
-        [Required(ErrorMessage = "Director is required.")]
-        public string Director { get; set; }
+        [Display(Name = "Director.")]
+        public string? Director { get; set; }
 
-        [Required(ErrorMessage = "Rating is required.")]
-        public string Rating { get; set; }
+        [Display(Name = "Rating.")]
+        public string? Rating { get; set; }
 
-        [Display(Name = "Edited")]
-        public bool? Edited { get; set; } // Note the use of nullable bool
+        [Required(ErrorMessage = "Edit is required")]
+        public int Edited { get; set; } 
 
         [Display(Name = "LentTo")]
         public string? LentTo { get; set; }
 
-        [StringLength(25, ErrorMessage = "Notes must be at most 25 characters.")]
+        [Required(ErrorMessage = "CopiedToPlex is required")]
+        public int CopiedToPlex { get; set; }
+
+        [Display, StringLength(25, ErrorMessage = "Notes must be at most 25 characters.")]
         public string? Notes { get; set; }
     }
 }

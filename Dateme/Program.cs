@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<JoelHilton.Models.MovieFormContext>(options =>
 {
-    options.UseSqlite(builder.Configuration["ConnectionStrings:DatingConnection"]);
+    options.UseSqlite(builder.Configuration["ConnectionStrings:MovieConnection"]);
 });
 
 var app = builder.Build();
